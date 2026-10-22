@@ -1,0 +1,74 @@
+<template>
+  <ul>
+    ${packages.map((pkg, index) => $h`
+    <li class="${index >= maxItem ? 'hidden' : ''}">
+      <a
+        class="item-link item-content"
+        @click="${(e) => {
+            e.stopPropagation();
+            seeDependencyInfo(pkg.id);
+          }}"
+      >
+        <div class="item-inner">
+          <div class="item-title-row">
+            <div class="item-title">${pkg.name}</div>
+            <div class="item-after">
+              <span>${pkg.version}</span>
+              ${pkg.direct && $h`
+              <span class="badge color-orange">
+                <i class="icon badge-icon material-symbols rounded md-only"
+                  >deployed_code</i
+                >
+                <i class="icon badge-icon f7-icons ios-only">layers</i>
+              </span>
+              `}
+            </div>
+          </div>
+          <div class="item-subtitle">
+            ${pkg.license?.id ?? "$:common.noknown"}
+          </div>
+          <div class="item-text">${pkg.description ?? ""}</div>
+        </div>
+      </a>
+    </li>
+    `)}
+  </ul>
+</template>
+
+<script>
+  import DependencyInfo from "./dependencyInfo.component.f7";
+  import strings from "@/js/string.js";
+  export default (props, { $f7 }) => {
+    const packages = props.packages;
+    const maxItem = props.maxitem ?? Infinity;
+
+    function seeDependencyInfo(id) {
+      const pkg = packages.find((item) => item.id === id);
+
+      if (!pkg) {
+        $f7.toast
+          .create({
+            text: strings.components.dependencies_lister.nopackagefound,
+          })
+          .open();
+        return;
+      }
+
+      $f7.views.main.router.navigate(
+        {
+          url: `/dependency-info/${encodeURIComponent(pkg.name)}/`,
+          route: {
+            path: `/dependency-info/${encodeURIComponent(pkg.name)}/`,
+            component: DependencyInfo,
+          },
+        },
+        {
+          props: {
+            pkg,
+          },
+        },
+      );
+    }
+    return $render;
+  };
+</script>

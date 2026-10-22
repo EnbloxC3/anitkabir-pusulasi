@@ -1,0 +1,12 @@
+{
+  "defaultLang": "tr",
+  "recursiveParsing": true,
+  "prefix": "$:",
+  "invalidKeyAct": {
+    "spaceInterface": "_",
+    "firstWord": "titleCase"
+  },
+  "keySearch": "desc",
+  "appSpecificInternals": true,
+  "jsonReferanceScope": "this"
+}

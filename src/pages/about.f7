@@ -1,0 +1,44 @@
+<template>
+  <div class="page" data-name="about">
+    <${navbar} title="$:title" />
+
+    <div class="page-content">
+      <div class="block-title">$:app_title</div>
+      <div class="block block-strong">
+        <p>$:description</p>
+        <p>$:independ</p>
+        <p>$:privacy</p>
+        <p>$:opensource</p>
+      </div>
+      <div class="block-title">$:links</div>
+      <div class="block block-strong">
+        <a class="external" target="_blank" href="$:internal.githubRepository">$:github_repo</a>
+      </div>
+      <div class="list list-strong links-list list-outline-ios list-strong-ios list-dividers-ios">
+        <ul>
+          <li>
+            <a href="/dependencies/" aria-label="$:dependencies">$:dependencies</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+  import strings, { _dom_utils, _defaults } from "@/js/string.js";
+  import navbar from "@/components/pages/defaultNavbar.component.f7";
+  const { pages } = strings;
+  export default (_, { $el, $once }) => {
+    $once("pageInit", (_, page) => {
+      if (page.el !== $el.value[0]) return;
+      const context = pages[page.name];
+      _dom_utils.parseElement($el.value[0], context, {
+        // about page specific
+        allowedAttrs: ["href", ..._defaults.allowedAttrs]
+      });
+
+      //page specific
+    });
+    return $render;
+  };
+</script>

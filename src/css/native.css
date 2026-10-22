@@ -1,0 +1,163 @@
+:root,
+html,
+body {
+  background-color: #000000;
+}
+
+:root:not(input):not(textarea):not(.selectable) {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.selectable {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+  -webkit-user-drag: text;
+}
+
+.md *::selection {
+  background-color: rgba(var(--f7-theme-color-rgb), 0.25);
+}
+.ios *::selection {
+  background-color: rgba(var(--f7-theme-color-rgb), 0.3);
+}
+
+* {
+  accent-color: var(--f7-theme-color-rgb);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  *,
+  *::before,
+  *::after {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .md .popup {
+    background-color: rgb(from var(--f7-popup-bg-color) r g b / 1) !important;
+  }
+
+  .md .sheet-modal {
+    background-color: rgb(from var(--f7-sheet-bg-color) r g b / 1) !important;
+  }
+
+  .md .popover {
+    background-color: rgb(from var(--f7-popover-bg-color) r g b / 1) !important;
+  }
+
+  .md .dialog {
+    background-color: rgb(from var(--f7-dialog-bg-color) r g b / 1) !important;
+  }
+
+  .md .actions-modal {
+    background-color: rgb(
+      from var(--f7-actions-modal-bg-color) r g b / 1
+    ) !important;
+  }
+
+  .md .notification {
+    background-color: rgb(
+      from var(--f7-notification-bg-color) r g b / 1
+    ) !important;
+  }
+
+  .ios .popup,
+  .ios .sheet-modal,
+  .ios .popover,
+  .ios .dialog,
+  .ios .actions-modal,
+  .ios .notification {
+    background-color: var(--f7-page-bg-color) !important;
+  }
+}
+
+@media (color-gamut: srgb) {
+  :root {
+    color-scheme: light dark;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    filter: contrast(1.1);
+  }
+}
+
+@media (prefers-contrast: less) {
+  :root {
+    filter: contrast(0.9);
+  }
+}
+
+@media (prefers-contrast: custom) {
+  .md,
+  .ios {
+    color: CanvasText;
+  }
+
+  .md .page,
+  .ios .page,
+  .md .navbar,
+  .ios .navbar,
+  .md .toolbar,
+  .ios .toolbar,
+  .md .tabbar,
+  .ios .tabbar,
+  .md .popup,
+  .ios .popup,
+  .md .sheet-modal,
+  .ios .sheet-modal,
+  .md .popover,
+  .ios .popover,
+  .md .dialog,
+  .ios .dialog,
+  .md .actions-modal,
+  .ios .actions-modal,
+  .md .notification,
+  .ios .notification,
+  .md .list,
+  .ios .list,
+  .md .card,
+  .ios .card,
+  .md .accordion-item,
+  .ios .accordion-item,
+  .md .menu,
+  .ios .menu,
+  .md .menu-dropdown,
+  .ios .menu-dropdown,
+  .md .searchbar,
+  .ios .searchbar,
+  .md .login-screen,
+  .ios .login-screen,
+  .md .popover-inner,
+  .ios .popover-inner {
+    &:not([class*="-transparent"]) {
+      background-color: Canvas !important;
+      color: CanvasText !important;
+      border-color: CanvasText !important;
+    }
+  }
+}
+
+.list .item-link .item-inner:before,
+.links-list a:before {
+  speak: none;
+}

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Anıtkabir Pusulası</string>
+    <string name="title_activity_main">Anıtkabir Pusulası</string>
+    <string name="package_name">index.app.anitkabirpusulasi</string>
+    <string name="custom_url_scheme">index.app.anitkabirpusulasi</string>
+</resources>

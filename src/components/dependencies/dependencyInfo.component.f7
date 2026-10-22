@@ -1,0 +1,337 @@
+<template>
+  <div class="page">
+    <${navbar} title="$:title" />
+
+    <div class="page-content">
+      <div class="block">
+        <h2>${pkg.name}</h2>
+        <p>${pkg.description ?? ""}</p>
+      </div>
+
+      <div class="block-title">$:package_info</div>
+
+      <div class="list list-strong list-dividers">
+        <ul>
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">$:version</div>
+                <div class="item-after">${pkg.version}</div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <a class="item-link item-content" @click="${() => seeLicenseInfo(pkg.id)}" aria-label="$:license">
+              <div class="item-inner">
+                <div class="item-title">$:license</div>
+                <div class="item-after">
+                  ${pkg.license?.id ?? "$:common.noknown"}
+                </div>
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">$:dependency_type</div>
+                <div class="item-after">
+                  ${pkg.type .map((type) => ({ dependency: "$:dependency",
+                  devDependency: "$:dev_dependency", optionalDependency:
+                  "$:optional_dependency", peerDependency: "$:peer_dependency",
+                  })[type] ?? type) .join(", ")}
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">$:direct_dependency</div>
+                <div class="item-after">
+                  ${pkg.direct ? "$:common.yes" : "$:common.no"}
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      ${(pkg.homepage || pkg.repository) && $h`
+      <div class="block-title">$:project_links</div>
+      <div class="list list-strong list-dividers">
+        <ul>
+          ${pkg.homepage && $h`
+          <li>
+            <a class="item-link item-content external" target="_blank" href="${pkg.homepage}" rel="noopener noreferrer">
+              <div class="item-inner">
+                <div class="item-title">$:site</div>
+              </div>
+            </a>
+          </li>
+          `} ${pkg.repository && $h`
+          <li>
+            <a class="item-link item-content external" target="_blank" href="${normalizeRepoUrl(pkg.repository) || '#'}"
+              rel="noopener noreferrer">
+              <div class="item-inner">
+                <div class="item-title">$:source_code</div>
+              </div>
+            </a>
+          </li>
+          `}
+        </ul>
+      </div>
+      `} ${(pkg.funding && pkg.funding.length > 0) && $h`
+      <div class="block-title">$:funding</div>
+      <div class="list list-strong list-dividers media-list">
+        <ul>
+          ${pkg.funding.map((funding) => { _utils.variable("funding_name",
+          getFundingName(funding), {deleteAfterUse: true}); return $h`
+          <li>
+            <a class="item-link item-content external" target="_blank" href="${funding.url}" rel="noopener noreferrer">
+              <div class="item-inner">
+                <div class="item-title-row">
+                  <div class="item-title">${getFundingName(funding)}</div>
+                </div>
+                <div class="item-subtitle">
+                  ${_utils.parseText("$:fundingitem_subtitle", context)}
+                </div>
+              </div>
+            </a>
+          </li>
+          ` })}
+        </ul>
+      </div>
+      `} ${(pkg.funding && pkg.funding.length > 0) && $h`
+      <div class="block block-strong inset block-icon-ver bg-color-yellow text-color-black">
+        <i class="icon material-icons md-only">volunteer_activism</i>
+        <i class="icon f7-icons ios-only">heart_fill</i>
+        $:donate_to_support
+      </div>
+      `}
+    </div>
+  </div>
+</template>
+
+<script>
+  import strings, { _dom_utils, _utils, escapeHTML } from "@/js/string.js";
+  import navbar from "../pages/defaultNavbar.component.f7";
+  export default async (props, { $el, $f7, $onMounted, $onBeforeUnmount }) => {
+    let licensePopup = null;
+    const context = strings.components.dependency_info;
+    const pkg = props.pkg;
+
+    $onMounted(() => {
+      _utils.variable("package_name", pkg.name, { deleteAfterUse: true });
+      _dom_utils.parseElement($el.value[0], context);
+    });
+    $onBeforeUnmount(() => {
+      if (licensePopup)
+        licensePopup.once("closed", () => licensePopup.destroy());
+      licensePopup?.close();
+    });
+
+    function getFundingName(funding) {
+      const names = {
+        github: "GitHub Sponsors",
+        opencollective: "Open Collective",
+        tidelift: "Tidelift",
+        patreon: "Patreon",
+        ko_fi: "Ko-fi",
+        liberapay: "Liberapay",
+        thanks_dev: "thanks.dev",
+      };
+
+      if (funding.type && names[funding.type]) {
+        return names[funding.type];
+      }
+      try {
+        const hostname = new URL(funding.url).hostname.replace(/^www\./, "");
+        const hosts = {
+          "opencollective.com": "Open Collective",
+          "tidelift.com": "Tidelift",
+          "github.com": "GitHub Sponsors",
+          "patreon.com": "Patreon",
+          "ko-fi.com": "Ko-fi",
+          "buymeacoffee.com": "Buy Me a Coffee",
+          "liberapay.com": "Liberapay",
+          "polar.sh": "Polar",
+          "issuehunt.io": "IssueHunt",
+          "thanks.dev": "thanks.dev",
+          "lfx.linuxfoundation.org": "LFX",
+          "crowdfunding.lfx.linuxfoundation.org": "LFX Mentorship",
+          "paypal.com": "PayPal",
+          "paypal.me": "PayPal",
+          "donate.stripe.com": "Stripe",
+          "stripe.com": "Stripe",
+          "fundrazr.com": "FundRazr",
+          "gofundme.com": "GoFundMe",
+          "indiegogo.com": "Indiegogo",
+          "kickstarter.com": "Kickstarter",
+          "chuffed.org": "Chuffed",
+          "opencollective.org": "Open Collective",
+          "substack.com": "Substack",
+          "buy.stripe.com": "Stripe",
+          "streamlabs.com": "Streamlabs",
+          "streamlabscharity.com": "Streamlabs Charity",
+          "donorbox.org": "Donorbox",
+          "tipeee.com": "Tipeee",
+          "tipeee.stream": "Tipeee",
+          "communitybridge.org": "LFX Mentorship",
+          "crowdin.com": "Crowdin",
+        };
+
+        return hosts[hostname] ?? hostname;
+      } catch {
+        return context.funding_link;
+      }
+    }
+
+    function normalizeRepoUrl(repo) {
+      repo = repo
+        .trim()
+        .replace(/^git\+/i, "")
+        .replace(/\.git$/i, "");
+      if (/^(github|gitlab|bitbucket):/i.test(repo)) {
+        const [, host, path] = repo.match(/^(github|gitlab|bitbucket):(.*)$/i);
+
+        repo = `https://${{
+            github: "github.com",
+            gitlab: "gitlab.com",
+            bitbucket: "bitbucket.org",
+          }[host.toLowerCase()]
+          }/${path.replace(/^\/+/, "")}`;
+      } else if (/^git:(?!\/\/)/i.test(repo)) {
+        repo = repo.slice(4);
+      }
+      repo = repo
+        .replace(/^git:\/\//i, "https://")
+        .replace(/^ssh:\/\//i, "https://")
+        .replace(/^https?:\/\/git@/i, "https://");
+      try {
+        const url = new URL(repo);
+
+        url.protocol = "https:";
+        return url.href;
+      } catch {
+        //ignore
+      }
+      const path = repo.replace(/^\/+|\/+$/g, "").replace(/\.git$/i, "");
+
+      if (!/^[^/]+\/[^/]+$/.test(path)) return null;
+      return `https://github.com/${path}`;
+    }
+
+    async function seeLicenseInfo() {
+      if (!pkg?.license?.textFiles?.length) {
+        $f7.toast.create({ text: context.nolicensefile }).open();
+        return;
+      }
+
+      const files = pkg.license.textFiles;
+      const baseURL = import.meta.env.BASE_URL.replace(/\/+$/, "");
+      const contents = await Promise.all(
+        files.map(async ({ name, textFile }) => {
+          const path = `licenses/${textFile}`.replace(/^\/+/, "");
+          const response = await fetch(`${baseURL}/${path}`);
+
+          if (!response.ok) {
+            throw new Error(`File Cannot Loaded: ${textFile}`);
+          }
+          return {
+            name,
+            text: await response.text(),
+          };
+        }),
+      );
+
+      if (!licensePopup) {
+        const navbar = `
+              <div class="navbar">
+                <div class="navbar-bg"></div>
+                <div class="navbar-inner">
+                  <div class="left">
+                    <a
+                      href="#"
+                      class="link popup-close"
+                      aria-label="${escapeHTML(strings.common.back)}"
+                      title="${escapeHTML(strings.common.back)}"
+                    >
+                      <i class="icon icon-back"></i>
+                    </a>
+                  </div>
+                    <div class="title">${escapeHTML(context.license)}</div>
+                </div>
+            </div>
+          `;
+        const tabbar = `
+            <div class="toolbar tabbar toolbar-top">
+              <div class="toolbar-inner">
+                <div class="toolbar-pane">
+                  ${contents
+            .map(
+              ({ name }, index) => `
+                        <a
+                          href="#license-tab-${index}"
+                          class="tab-link${index === 0 ? " tab-link-active" : ""
+                }"
+                        >${escapeHTML(name)}</a>
+                      `,
+            )
+            .join("")}
+                </div>
+              </div>
+            </div>
+          `;
+        const tabs = `
+            <div class="tabs">
+              ${contents
+            .map(
+              ({ text }, index) => `
+                    <div
+                      id="license-tab-${index}"
+                      class="page-content tab${index === 0 ? " tab-active" : ""
+                }"
+                    >
+                      <div class="block">
+                        <pre class="license-text selectable">${escapeHTML(
+                  text,
+                )}</pre>
+                      </div>
+                    </div>
+                  `,
+            )
+            .join("")}
+            </div>
+          `;
+
+        const content = `
+          <div class="popup license-popup">
+            <div class="view no-swipeback">
+              <div class="page">
+                ${navbar}
+                ${tabbar}
+                ${tabs}
+              </div>
+            </div>
+          </div>
+        `;
+
+        const popup = $f7.popup.create({
+          content,
+        });
+
+        licensePopup = popup;
+
+        //-
+        const tabbarEl = licensePopup.el.querySelector(".tabbar");
+        $f7.toolbar.init(tabbarEl);
+      }
+      licensePopup.open();
+    }
+
+    return $render;
+  };
+</script>

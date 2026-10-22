@@ -1,0 +1,68 @@
+<template>
+  <div class="page" data-name="dependencies">
+    <${navbar} title="$:title" />
+
+    <div class="page-content">
+      <div class="block">
+        <p>$:description</p>
+      </div>
+      <form
+        data-search-container=".dependency-list"
+        data-search-in=".item-title"
+        class="searchbar searchbar-init"
+      >
+        <div class="searchbar-inner">
+          <div class="searchbar-input-wrap">
+            <input type="search" placeholder="$:common.search" />
+            <i class="searchbar-icon"></i>
+            <span
+              class="input-clear-button"
+              aria-label="$:common.clear"
+              title="$:common.clear"
+            ></span>
+          </div>
+          <span
+            class="searchbar-disable-button"
+            aria-label="$:common.cancel"
+            title="$:common.cancel"
+          >
+            <i class="icon icon-close"></i>
+          </span>
+        </div>
+      </form>
+      <div
+        class="list list-strong list-dividers-ios simple-list searchbar-not-found"
+      >
+        <ul class="searchbar-not-found">
+          <li>$:nothing_found</li>
+        </ul>
+      </div>
+      <div class="dependency-list searchbar-found">
+        <div class="block-title">$:dependencies</div>
+        <${Dependencies} />
+
+        <div class="block-title">$:dev_dependencies</div>
+        <${DevDependencies} />
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+  import Dependencies from "@/components/dependencies/dependencyList.component.f7";
+  import DevDependencies from "@/components/dependencies/devDependencyList.component.f7";
+  import strings, { _dom_utils } from "@/js/string.js";
+  import navbar from "@/components/pages/defaultNavbar.component.f7";
+  const { pages } = strings;
+  export default (_, { $el, $once }) => {
+    $once("pageInit", (_, page) => {
+      if (page.el !== $el.value[0]) return;
+      const context = pages[page.name];
+      _dom_utils.parseElement($el.value[0], context);
+
+      //page specific
+    });
+
+    return $render;
+  };
+</script>

@@ -1,0 +1,20 @@
+{
+  "cwd": "AnıtkabirPusulası",
+  "type": ["capacitor"],
+  "name": "Anıtkabir Pusulası",
+  "framework": "core",
+  "template": "blank",
+  "bundler": "vite",
+  "cssPreProcessor": false,
+  "theming": {
+    "customColor": true,
+    "color": "#e30a17",
+    "darkMode": false,
+    "iconFonts": true
+  },
+  "customBuild": false,
+  "pkg": "index.app.anitkabirpusulasi",
+  "capacitor": {
+    "platforms": ["ios", "android"]
+  }
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <!--
+  Customize this policy to fit your own app's needs. For more guidance, please refer to the docs:
+      https://cordova.apache.org/docs/en/latest/
+  Some notes:
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+      * Enable inline JS: add 'unsafe-inline' to default-src
+  -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: content:"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
+
+    <meta name="theme-color" content="#e30a17" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <link rel="icon" href="assets/favicon.png" />
+    <title>Anıtkabir Pusulası</title>
+    <style>
+      :root,
+      html,
+      body {
+        background-color: #000000;
+      }
+      .noscript-screen {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        padding: 16px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Tahoma,
+          Arial, sans-serif;
+        color: #111;
+        user-select: none;
+        -webkit-font-smoothing: antialiased;
+      }
+      .noscript-dialog {
+        width: min(100%, 360px);
+        box-sizing: border-box;
+        background: #c8c8c8;
+        border: 1px dashed #777;
+        box-shadow: 0 0 0 1px #333, inset 0 1px 0 #eeeeee, inset 0 -1px 0 #888,
+          2px 2px 0 rgba(0, 0, 0, 0.45);
+      }
+      .noscript-title {
+        box-sizing: border-box;
+        padding: 7px 10px;
+        background: #9b9b9b;
+        border-bottom: 1px dashed #5e5e5e;
+        color: #ff0000;
+        font-size: 15px;
+        line-height: 1.25;
+        font-weight: 600;
+        box-shadow: inset 0 1px 0 #cfcfcf, inset 0 -1px 0 #858585;
+      }
+      .noscript-description {
+        box-sizing: border-box;
+        padding: 12px 13px 13px;
+        background: #d7d7d7;
+        border-top: 1px solid #eeeeee;
+      }
+      .noscript-description p {
+        margin: 0;
+        color: #292929;
+        font-size: 13px;
+        line-height: 1.4;
+      }
+      .noscript-description p + p {
+        margin-top: 8px;
+      }
+    </style>
+
+    <!-- built styles file will be auto injected -->
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <audio id="sirenAudio" preload="auto"></audio>
+
+    <script>
+      console.log("Anıtkabir Pusulası");
+    </script>
+    <script type="module" src="./js/main.js"></script>
+    <noscript>
+      <div class="noscript-screen">
+        <div class="noscript-dialog">
+          <div class="noscript-title">JavaScript Required</div>
+
+          <div class="noscript-description">
+            <p>This app requires JavaScript to operate.</p>
+          </div>
+        </div>
+      </div>
+    </noscript>
+  </body>
+</html>

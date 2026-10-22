@@ -1,0 +1,36 @@
+<template>
+  <div class="page" data-name="bugs">
+    <${navbar} title="$:title" />
+
+    <div class="page-content">
+      <div class="block block-strong">
+        <p>$:description</p>
+        <ul>
+          <li>$:known_bug_1</li>
+          <li>$:known_bug_2</li>
+          <li>$:known_bug_3</li>
+          <li>$:known_bug_4</li>
+          <li>$:known_bug_5</li>
+          <li>$:known_bug_6</li>
+        </ul>
+        <p>$:sorry</p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+  import strings, { _dom_utils } from "@/js/string.js";
+  import navbar from "@/components/pages/defaultNavbar.component.f7";
+  const { pages } = strings;
+  export default (_, { $el, $once }) => {
+    $once("pageInit", (_, page) => {
+      if (page.el !== $el.value[0]) return;
+      const context = pages[page.name];
+      _dom_utils.parseElement($el.value[0], context);
+
+      //page specific
+    });
+    return $render;
+  };
+</script>

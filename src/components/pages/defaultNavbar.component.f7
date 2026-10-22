@@ -1,0 +1,25 @@
+<template>
+  <div class="navbar">
+    <div class="navbar-bg"></div>
+    <div class="navbar-inner">
+      <div class="left">
+        <a
+          href="#"
+          class="link back popup-close"
+          aria-label="$:common.back"
+          title="$:common.back"
+        >
+          <i class="icon icon-back"></i>
+        </a>
+      </div>
+      <div class="title">${title}</div>
+    </div>
+  </div>
+</template>
+
+<script>
+  export default (props) => {
+    const title = props.title;
+    return $render;
+  };
+</script>

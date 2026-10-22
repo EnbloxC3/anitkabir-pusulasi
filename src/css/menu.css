@@ -1,0 +1,133 @@
+.control-grid {
+  position: relative;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.fab#openCompass {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  --f7-navbar-height: 0px;
+}
+
+.page-main .navbar .navbar-bg {
+  transition: height 0.3s ease;
+}
+
+.page-main .navbar a {
+  transition: color 0.3s ease;
+}
+
+@media (max-height: 500px) {
+  .page-main {
+    --f7-safe-area-top: 0px;
+  }
+
+  .page-main .navbar .navbar-bg {
+    height: 0px;
+  }
+
+  html:not(.dark).md
+    .page-main:has(.control-grid:not(.fulldeactive)):has(
+      #cameraView:not(.active)
+    )
+    .navbar {
+    --f7-navbar-link-color: revert;
+    --f7-bars-link-color: revert;
+    --f7-theme-color: revert;
+    /**/
+    --f7-md-on-surface: revert;
+    --f7-theme-color: revert;
+    --f7-theme-color-rgb: revert;
+    --f7-md-primary: revert;
+    --f7-md-primary-rgb: revert;
+  }
+  html:not(.dark).md
+    .page-main:has(.control-grid:not(.fulldeactive)):has(
+      #cameraView:not(.active)
+    )
+    .navbar
+    a {
+    --f7-md-on-surface: revert;
+    --f7-theme-color: revert;
+    --f7-theme-color-rgb: revert;
+    --f7-md-primary: revert;
+    --f7-md-primary-rgb: revert;
+    /*color: var(
+      --f7-navbar-link-color,
+      var(--f7-bars-link-color, var(--f7-theme-color))
+    );*/ /* theres another option for coloring (forked by framework7 ".navbar a" itself). i prefer --f7-theme-color using default */
+  }
+
+  .page-main .navbar {
+    pointer-events: none;
+  }
+
+  .page-main .navbar a,
+  .page-main .navbar button,
+  .page-main .navbar input,
+  .page-main .navbar select,
+  .page-main .navbar textarea,
+  .page-main .navbar label {
+    pointer-events: auto;
+  }
+
+  .control-grid {
+    padding-top: var(--f7-navbar-height);
+    .fab#openCompass {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+  }
+  .control-grid.fulldeactive {
+    .fab#openCompass {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+  }
+}
+
+.siren-btn {
+  grid-column: span 2;
+  background: linear-gradient(45deg, #333, #111);
+  border: 1px solid #444;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 12px;
+  color: #fff !important;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.siren-btn > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.siren-btn .icon {
+  display: block;
+}
+.siren-btn.playing {
+  background: linear-gradient(45deg, #e30a17, #a30000);
+  animation: siren-glow 0.5s alternate infinite;
+}
+@keyframes siren-glow {
+  from {
+    box-shadow: 0 0 10px #e30a17;
+  }
+  to {
+    box-shadow: 0 0 30px #e30a17;
+  }
+}
+
+#settings-sheet {
+  padding-top: var(--f7-safe-area-top);
+}

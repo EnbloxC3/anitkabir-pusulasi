@@ -1,0 +1,94 @@
+/* Custom (Self) Classes */
+
+.fab.fab-mini {
+  --f7-fab-size: 30px;
+  --f7-fab-icon-size: 16px;
+  --f7-fab-border-radius: 50%;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.lowercase {
+  text-transform: lowercase;
+}
+
+.item-after {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.badge-icon {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  vertical-align: middle !important;
+}
+
+.md .badge-icon {
+  font-size: 1.3em;
+}
+
+.ios .badge-icon {
+  font-size: 1.5em;
+}
+
+.hidden {
+  display: none;
+}
+
+.view.router-transition-forward .page-current,
+.view.router-transition-forward .page-next,
+.view.router-transition-backward .page-current,
+.view.router-transition-backward .page-previous {
+  will-change: transform, opacity;
+}
+
+.page.page-current,
+.page.page-previous {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.page.page-current .page-content {
+  overscroll-behavior: contain;
+}
+
+.list,
+.list li {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 64px;
+  contain: layout paint;
+}
+
+.block-icon-ver,
+.block-icon-hor {
+  display: flex;
+  gap: 8px;
+}
+
+.block-icon-ver {
+  align-items: center;
+}
+
+.block-icon-hor {
+  flex-direction: column;
+}
+
+.block-icon-ver > .icon,
+.block-icon-hor > .icon {
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.block-icon-hor > .icon {
+  font-size: 24px;
+}
+
+.block-content-center {
+  align-items: center;
+  text-align: center;
+}

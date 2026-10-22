@@ -1,0 +1,234 @@
+<template>
+  <div class="view view-main ios-edges view-init">
+    <div class="page page-main" data-name="home">
+      <div class="sheet-modal sheet-modal-top sheet" id="settings-sheet">
+        <div class="toolbar">
+          <div class="toolbar-inner">
+            <div class="left"></div>
+            <div class="right">
+              <a class="link sheet-close md-only" href="#" aria-label="$:common.close" title="$:common.close"><i
+                  class="icon material-icons">close</i>
+              </a>
+              <a class="link sheet-close ios-only" href="#" aria-label="$:common.close" title="$:common.close"><i
+                  class="icon f7-icons">compass</i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="sheet-modal-inner">
+          <div class="page-content">
+            <div class="block ios-only">
+              <div class="block-title ios-only"></div>
+            </div>
+            <div class="block-title">$:app_settings</div>
+            <div class="list">
+              <ul>
+                <li>
+                  <div class="item-content">
+                    <div class="item-inner">
+                      <div class="item-title">$:theme_mode</div>
+                      <div class="item-after">
+                        <div id="theme-segment" class="segmented segmented-round">
+                          <a href="#" class="button button-small button-round button-outline"
+                            data-value="light">$:theme_mode_light</a>
+                          <a href="#" class="button button-small button-round button-outline button-active"
+                            data-value="auto">$:theme_mode_system</a>
+                          <a href="#" class="button button-small button-round button-outline"
+                            data-value="dark">$:theme_mode_dark</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+
+                <li>
+                  <div class="item-content">
+                    <div class="item-inner">
+                      <div class="item-title">$:silent_mode ($:siren)</div>
+                      <div class="item-after">
+                        <label class="toggle toggle-init">
+                          <input type="checkbox" id="toggle-mute" />
+                          <span class="toggle-icon"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="list links-list">
+              <ul>
+                <li>
+                  <a class="sheet-close" href="/bugs/" aria-label="$:bugs">$:bugs</a>
+                </li>
+                <li>
+                  <a class="sheet-close" href="/about/" aria-label="$:about">$:about</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="block-footer">
+              <p>
+                $:vertical_info
+                <br />$:target: $:target_string
+              </p>
+              <p>$:version_string</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navbar navbar-transparent dark">
+        <div class="navbar-bg"></div>
+        <div class="navbar-inner sliding">
+          <div class="title" style="width: 100%">$:title</div>
+          <div class="right">
+            <a href="#" class="link color-white sheet-open" data-sheet="#settings-sheet" aria-label="$:app_settings"
+              title="$:app_settings">
+              <i class="icon material-symbols rounded filled md-only">settings</i>
+              <!-- Prevents lazy loading for material symbols (lazy loading causes dependencies page direct dependency icon has FOUT (flash of unstyled text)) -->
+              <i class="icon f7-icons ios-only">gear</i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-content" style="padding-top: 0; overflow: hidden">
+        <div id="cameraView">
+          <video id="camVideo" autoplay webkit-playsinline playsinline muted
+            poster="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="></video>
+          <div class="ar-overlay">
+            <div class="ar-top-info">
+              <h2 class="uppercase">$:mausoleum</h2>
+              <div class="ar-dist" id="arDistLabel">$:calculating</div>
+            </div>
+
+            <div class="ar-tape-wrapper">
+              <div class="dir-arrow dir-left" id="arrowLeft">
+                <i class="icon material-icons">arrow_back</i>
+              </div>
+
+              <div class="tape-track">
+                <div class="tape-marker" id="tapeMarker" style="display: none">
+                  <div class="tm-label uppercase">$:target</div>
+                  <div class="tm-arrow"></div>
+                  <div class="tm-line"></div>
+                </div>
+              </div>
+
+              <div class="dir-arrow dir-right" id="arrowRight">
+                <i class="icon material-icons">arrow_forward</i>
+              </div>
+            </div>
+
+            <div style="
+                text-align: center;
+                color: rgba(255, 255, 255, 0.5);
+                font-size: 12px;
+                margin-bottom: 20px;
+              ">
+              $:camera_set_vertical_info
+            </div>
+          </div>
+        </div>
+
+        <div class="compass-container dark">
+          <div class="compass-body" aria-hidden="true">
+            <div class="compass-ticks"></div>
+
+            <div class="compass-card" id="compassCard">
+              <div class="card-n">$:north_indicator</div>
+              <div class="card-s">$:south_indicator</div>
+            </div>
+
+            <div class="needle-wrapper" id="needleWrapper">
+              <div class="needle"></div>
+            </div>
+
+            <div class="center-dot"></div>
+          </div>
+
+          <div class="info-panel">
+            <div class="distance-badge" id="distBadge">$:distance: --</div>
+            <div class="main-degree" id="azimuthDisplay">--°</div>
+            <div style="font-size: 12px; opacity: 0.6">$:target_direction</div>
+          </div>
+
+          <div class="fab fab-mini fab-right-bottom" id="openControls" aria-label="$:open_controls"
+            title="$:open_controls">
+            <a href="#" class="link">
+              <i class="icon material-icons md-only">keyboard_arrow_up</i>
+              <i class="icon f7-icons ios-only">chevron_up</i>
+            </a>
+          </div>
+        </div>
+
+        <div class="control-grid fulldeactive">
+          <div class="fab fab-mini fab-left-top" id="openCompass" aria-label="$:open_compass" title="$:open_compass">
+            <a href="#" class="link">
+              <i class="icon material-icons md-only">keyboard_arrow_down</i>
+              <i class="icon f7-icons ios-only">chevron_down</i>
+            </a>
+          </div>
+          <button class="button button-fill button-large button-round" id="permBtn">
+            <i class="icon material-icons md-only">explore</i>
+            <i class="icon f7-icons ios-only">compass_fill</i>
+            $:calibrate
+          </button>
+          <button class="button button-large button-round button-outline" id="refBtn">
+            <i class="icon material-icons md-only">refresh</i>
+            <i class="icon f7-icons ios-only">arrow_2_circlepath</i>
+            $:refresh
+          </button>
+
+          <button class="button button-fill siren-btn ripple" id="sirenBtn">
+            <span class="siren-icon-start"><i class="icon material-icons md-only">volume_up</i>
+              <i class="icon f7-icons ios-only">speaker_3</i></span>
+            <span class="siren-icon-stop" style="display: none"><i class="icon material-icons md-only">stop</i><i
+                class="icon f7-icons ios-only">stop</i></span>
+            <span class="siren-text uppercase">$:siren</span>
+          </button>
+        </div>
+
+        <div class="block block-strong inset display-flex justify-content-center align-items-center" style="
+            background: rgba(255, 255, 255, 0.05);
+            color: #aaa;
+            font-size: 12px;
+          ">
+          <i class="icon material-icons md-only" style="font-size: 16px; margin-right: 6px">info</i>
+          <i class="icon f7-icons ios-only" style="font-size: 16px; margin-right: 6px">info_circle_fill</i>
+          <span>$:mode_switch_info</span>
+        </div>
+      </div>
+    </div>
+    <div class="popover popover-menu" id="context-popover">
+      <div class="popover-inner">
+        <div class="list">
+          <ul></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+  import strings, { _dom_utils } from "@/js/string.js";
+  const { pages } = strings;
+  export default (_, { $f7, $el, $once }) => {
+    $once("pageInit", (_, page) => {
+      //if (page.el !== $el.value[0]) return;
+      const context = pages[page.name];
+      _dom_utils.parseElement($el.value[0], context);
+
+      //mainpage specific
+      document.documentElement.lang = strings.internal.lang;
+      document.documentElement.dir = strings.internal.dir;
+
+      //page specific
+      if (sessionStorage.getItem("splitMenu") === "1")
+        $el.value
+          .find("div.compass-container, div.control-grid")
+          .toggleClass("fulldeactive");
+    });
+    return $render;
+  };
+</script>

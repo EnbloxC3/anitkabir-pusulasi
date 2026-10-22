@@ -1,0 +1,25 @@
+{
+  "appId": "index.app.anitkabirpusulasi",
+  "appName": "Anıtkabir Pusulası",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0,
+      "launchAutoHide": true
+    },
+    "StatusBar": {
+      "style": "DARK",
+      "backgroundColor": "#000000",
+      "overlaysWebView": true
+    },
+    "SystemBars": {
+      "insetsHandling": "native",
+      "style": "DARK",
+      "hidden": false,
+      "initialViewportFitValueHint": "cover"
+    }
+  },
+  "cordova": {}
+}
