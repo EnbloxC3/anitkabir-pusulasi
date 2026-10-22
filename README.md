@@ -6,7 +6,7 @@
 > [!WARNING]  
 > This project belongs to the FOSS community and will not be further developed by its individual developer.
 
-[Turkish Version](README.tr)
+[Turkish Version](README.tr.md)
 
 This app is a compass app that shows the location of Anıtkabir (the mausoleum of Atatürk).
 
@@ -37,11 +37,11 @@ This app is a compass app that shows the location of Anıtkabir (the mausoleum o
 - **_Camera_**: To use camera mode
 - (**_Motion Sensors/Orientation_**: To calculate the direction to the target according to device orientation)
 
-## [Requirements](REQUIREMENTS)
+## [Requirements](REQUIREMENTS.md)
 
 ^
 
-## [Installing/Building](BUILD)
+## [Installing/Building](BUILD.md)
 
 ^
 

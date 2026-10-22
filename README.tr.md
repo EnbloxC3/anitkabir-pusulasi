@@ -6,7 +6,7 @@
 > [!WARNING]  
 > Bu proje Ücretsiz ve Açık Kaynak Yazılım (FOSS) topluluğuna bırakılmıştır ve bireysel geliştiricisi tarafından daha fazla geliştirilmeyecektir.
 
-[English Version](README)
+[English Version](README.md)
 
 Bu uygulama Anıtkabir'in konumunu gösteren bir pusula uygulamasıdır.
 
@@ -37,11 +37,11 @@ Bu uygulama Anıtkabir'in konumunu gösteren bir pusula uygulamasıdır.
 - **_Kamera_**: Kamera modunu kullanmak için.
 - (**_Hareket Sensörleri_**: Hedef yönünü cihazın yönüne göre hesaplamak için)
 
-## [Gereksinimler](REQUIREMENTS.tr)
+## [Gereksinimler](REQUIREMENTS.tr.md)
 
 ^
 
-## [Yükleme/Derleme](BUILD.tr)
+## [Yükleme/Derleme](BUILD.tr.md)
 
 ^
 
