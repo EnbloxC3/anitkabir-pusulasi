@@ -3,12 +3,7 @@
     <div class="navbar-bg"></div>
     <div class="navbar-inner">
       <div class="left">
-        <a
-          href="#"
-          class="link back popup-close"
-          aria-label="$:common.back"
-          title="$:common.back"
-        >
+        <a href="#" class="link back popup-close" aria-label="$:common.back" title="$:common.back">
           <i class="icon icon-back"></i>
         </a>
       </div>

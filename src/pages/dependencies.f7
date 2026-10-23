@@ -6,33 +6,19 @@
       <div class="block">
         <p>$:description</p>
       </div>
-      <form
-        data-search-container=".dependency-list"
-        data-search-in=".item-title"
-        class="searchbar searchbar-init"
-      >
+      <form data-search-container=".dependency-list" data-search-in=".item-title" class="searchbar searchbar-init">
         <div class="searchbar-inner">
           <div class="searchbar-input-wrap">
             <input type="search" placeholder="$:common.search" />
             <i class="searchbar-icon"></i>
-            <span
-              class="input-clear-button"
-              aria-label="$:common.clear"
-              title="$:common.clear"
-            ></span>
+            <span class="input-clear-button" aria-label="$:common.clear" title="$:common.clear"></span>
           </div>
-          <span
-            class="searchbar-disable-button"
-            aria-label="$:common.cancel"
-            title="$:common.cancel"
-          >
+          <span class="searchbar-disable-button" aria-label="$:common.cancel" title="$:common.cancel">
             <i class="icon icon-close"></i>
           </span>
         </div>
       </form>
-      <div
-        class="list list-strong list-dividers-ios simple-list searchbar-not-found"
-      >
+      <div class="list list-strong list-dividers-ios simple-list searchbar-not-found">
         <ul class="searchbar-not-found">
           <li>$:nothing_found</li>
         </ul>

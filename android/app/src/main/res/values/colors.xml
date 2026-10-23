@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ae2621</color>
+    <color name="colorPrimaryDark">#f9b6ae</color>
+    <color name="colorAccent">#ae2621</color>
+    <!-- Dynamic equals of Framework7 theme engine (based by #e30a17) -->
+</resources>
