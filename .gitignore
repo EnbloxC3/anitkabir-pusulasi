@@ -58,3 +58,5 @@ www/
 public/licenses
 
 *.cpuprofile
+
+build/
