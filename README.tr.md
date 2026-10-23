@@ -3,7 +3,7 @@
 ![Version](https://img.shields.io/badge/version-1.0.0-blue?style=flat-square)
 ![License](https://img.shields.io/github/license/EnbloxC3/anitkabir-pusulasi?style=flat-square)
 
-> [!WARNING]  
+> [!IMPORTANT]  
 > Bu proje Ücretsiz ve Açık Kaynak Yazılım (FOSS) topluluğuna bırakılmıştır ve bireysel geliştiricisi tarafından daha fazla geliştirilmeyecektir.
 
 [English Version](README.md)

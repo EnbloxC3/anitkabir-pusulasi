@@ -82,6 +82,8 @@ or
 npm run release-build-android -- --out aab
 ```
 
+**Use `--signing-type [jarsigner/apksigner]` (build-android) or `--signing [jarsigner/apksigner]` (release-build-android) if you want to use another signer (apksigner recommended way)**
+
 > You need to enter your keystore requirements see [.env.example](.env.example)
 
 ### iOS

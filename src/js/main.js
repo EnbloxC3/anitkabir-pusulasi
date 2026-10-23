@@ -7,7 +7,7 @@ import { app } from "./app";
 import { Compass } from "./compass";
 import strings from "./string";
 
-const TARGET = { lat: 39.925294, lon: 32.837438 };
+const TARGET = { lat: 39.925294, lon: 32.837438 }; // Anıtkabir's location
 const FOV_H = 60;
 
 let state = {
@@ -80,9 +80,9 @@ waitForDomReady((e) => {
   ]);
   console.timeEnd("scriptPerformance");
   console.log(
-    `%c${app.name.toLocaleUpperCase("tr")}%c\n%c${strings.app.description} %cv${
-      strings.internal.version
-    }`,
+    `%c${app.name.toLocaleUpperCase(strings.internal.lang)}%c\n%c${
+      strings.app.description
+    } %cv${strings.internal.version}`,
     `
     background: linear-gradient(135deg, #e30a17, #ff5a5f, #8b0000);
     color: white;
@@ -99,3 +99,27 @@ waitForDomReady((e) => {
     border: 1px solid #e30a17;`,
   );
 });
+
+setTimeout(() => {
+  log.warn(
+    "%c⚠️ WARNING %cThe browser console (this tool) may expose sensitive information, including your precise location, device details, personal data, and other confidential information.%c\n%cDO NOT: %cShare these logs without checking them, screen sharing here, send screenshot of here.",
+    null,
+    [
+      `color: blueviolet;
+    border: 1px solid blueviolet;
+    font-size: 18px;
+    line-height: 1.5;
+    font-weight: 700;`,
+      `color: initial;
+    font-size: 14px;
+    border: 1px solid blueviolet;`,
+      `all: initial;`,
+      `color: red;
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.5;`,
+      `color: initial;
+      border: 1px solid red;`,
+    ],
+  );
+}, 1550);

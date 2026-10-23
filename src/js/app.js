@@ -113,6 +113,4 @@ Logger.channel("app").info(
   ["color: blue;"],
 );
 
-console.log(import.meta.env);
-
 export { app, Framework7, $ };

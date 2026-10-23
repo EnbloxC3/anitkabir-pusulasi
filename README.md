@@ -3,7 +3,7 @@
 ![Version](https://img.shields.io/badge/version-1.0.0-blue?style=flat-square)
 ![License](https://img.shields.io/github/license/EnbloxC3/anitkabir-pusulasi?style=flat-square)
 
-> [!WARNING]  
+> [!IMPORTANT]  
 > This project belongs to the FOSS community and will not be further developed by its individual developer.
 
 [Turkish Version](README.tr.md)
