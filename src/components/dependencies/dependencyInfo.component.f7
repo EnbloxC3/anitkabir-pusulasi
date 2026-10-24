@@ -198,10 +198,10 @@
         const [, host, path] = repo.match(/^(github|gitlab|bitbucket):(.*)$/i);
 
         repo = `https://${{
-            github: "github.com",
-            gitlab: "gitlab.com",
-            bitbucket: "bitbucket.org",
-          }[host.toLowerCase()]
+          github: "github.com",
+          gitlab: "gitlab.com",
+          bitbucket: "bitbucket.org",
+        }[host.toLowerCase()]
           }/${path.replace(/^\/+/, "")}`;
       } else if (/^git:(?!\/\/)/i.test(repo)) {
         repo = repo.slice(4);
@@ -230,24 +230,29 @@
         return;
       }
 
-      const files = pkg.license.textFiles;
-      const baseURL = import.meta.env.BASE_URL.replace(/\/+$/, "");
-      const contents = await Promise.all(
-        files.map(async ({ name, textFile }) => {
-          const path = `licenses/${textFile}`.replace(/^\/+/, "");
-          const response = await fetch(`${baseURL}/${path}`);
+      const fetchLicenses = async () => {
+        const files = pkg.license.textFiles;
+        const baseURL = import.meta.env.BASE_URL.replace(/\/+$/, "");
+        const contents = await Promise.all(
+          files.map(async ({ name, textFile }) => {
+            const path = `licenses/${textFile}`.replace(/^\/+/, "");
+            const response = await fetch(`${baseURL}/${path}`);
 
-          if (!response.ok) {
-            throw new Error(`File Cannot Loaded: ${textFile}`);
-          }
-          return {
-            name,
-            text: await response.text(),
-          };
-        }),
-      );
+            if (!response.ok) {
+              throw new Error(`File Cannot Loaded: ${textFile}`);
+            }
+            return {
+              name,
+              text: await response.text(),
+            };
+          }),
+        );
+
+        return contents
+      }
 
       if (!licensePopup) {
+        const contents = await fetchLicenses();
         const navbar = `
               <div class="navbar">
                 <div class="navbar-bg"></div>
