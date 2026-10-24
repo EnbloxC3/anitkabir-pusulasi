@@ -7,6 +7,14 @@
 
 ## User Requirements
 
+### Device
+
+| App Function           | Requirement                                                                                 |
+| ---------------------- | ------------------------------------------------------------------------------------------- |
+| Geolocation            | Hardware capable of providing positional info; GPS/GNSS, Wi-Fi/Cellular, Bluetooth/BLE etc. |
+| Camera (Optional)      | Hardware capable of capturing video; Camera sensors or modules                              |
+| Orientation (Optional) | Hardware capable of providing 3D orientation; Accelerometer, Gyroscope, (Magnetometer)      |
+
 ### Browser
 
 | Browser / engine       | Minimum version |

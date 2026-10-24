@@ -7,6 +7,14 @@
 
 ## Kullanıcı Gereksinimleri
 
+### Cihaz
+
+| Uygulama İşlevi            | Gereksinim                                                                      |
+| -------------------------- | ------------------------------------------------------------------------------- |
+| Coğrafi Konum              | Konum bilgisi sağlayabilen donanım; GPS/GNSS, Wi-Fi/Hücresel, Bluetooth/BLE vs. |
+| Kamera (İsteğe Bağlı)      | Ortam videosu sağlayabilen donanım; Kamera sensörleri veya modülleri            |
+| Oryantasyon (İsteğe Bağlı) | 3B yön bilgisi sağlayabilen donanım; İvmeölçer, Jiroskop, (Manyetometre)        |
+
 ### Tarayıcı
 
 | Tarayıcı / Motor              | Minimum sürüm |
