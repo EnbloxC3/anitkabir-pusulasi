@@ -24,6 +24,7 @@
     "build-ios": "npm run build-capacitor-ios && npx cap build ios",
     "build-web": "npm run build",
     "release-build-android": "npm run build-capacitor-android && node scripts/release-build-android.mjs",
+    "prerelease-build-android": "npm run build-capacitor-android:beta && node scripts/release-build-android.mjs",
     "postinstall": "node scripts/copy-fonts.mjs && npm run generate-licenses",
     "generate-licenses": "node scripts/generate-licenses.mjs",
     "update-licenses": "npm generate-licenses"
