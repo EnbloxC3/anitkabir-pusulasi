@@ -1,16 +1,13 @@
 <template>
-  <div
-    class="list list-strong list-outline-ios list-strong-ios list-dividers-ios media-list chevron-center"
-  >
+  <div class="list list-strong list-outline-ios list-strong-ios list-dividers-ios media-list chevron-center">
     <${Lister} packages=${packages} maxItem=${props.max} />
   </div>
 </template>
 
 <script>
-  import dependencies from "&/licenses/dependencies.json";
   import Lister from "./lister.component.f7";
-  export default (props) => {
-    const packages = dependencies.packages.filter((p) =>
+  export default async (props) => {
+    const packages = props.dependencies.packages.filter((p) =>
       p.type.includes("devDependency"),
     );
     return $render;

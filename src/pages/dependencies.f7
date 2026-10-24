@@ -25,10 +25,10 @@
       </div>
       <div class="dependency-list searchbar-found">
         <div class="block-title">$:dependencies</div>
-        <${Dependencies} />
+        <${Dependencies} dependencies=${dependencies} />
 
         <div class="block-title">$:dev_dependencies</div>
-        <${DevDependencies} />
+        <${DevDependencies} dependencies=${dependencies} />
       </div>
     </div>
   </div>
@@ -40,8 +40,15 @@
   import strings, { _dom_utils } from "@/js/string.js";
   import navbar from "@/components/pages/defaultNavbar.component.f7";
   const { pages } = strings;
-  export default (_, { $el, $once }) => {
-    $once("pageInit", (_, page) => {
+  export default async (_, { $el, $once }) => {
+    async function fetchDependencies() {
+      const response = await fetch(
+        `${import.meta.env.BASE_URL.replace(/\/+$/, "")}/licenses/dependencies.json`
+      );
+      return await response.json();
+    }
+    const dependencies = await fetchDependencies();
+    $once("pageInit", async (_, page) => {
       if (page.el !== $el.value[0]) return;
       const context = pages[page.name];
       _dom_utils.parseElement($el.value[0], context);
