@@ -1,0 +1,21 @@
+stages:
+  - deploy
+
+deploy-pages:
+  stage: deploy
+  image: node:22
+
+  script:
+    - npm ci
+    - npm run build -- --mode beta
+    - test -s www/index.html
+
+  variables:
+    VITE_DEBUG_UI: "true"
+    VITE_ERUDA: "false"
+
+  pages:
+    publish: www
+
+  rules:
+    - if: "$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH"
