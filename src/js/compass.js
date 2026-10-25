@@ -446,6 +446,8 @@ class CameraManager {
 // FIXMEOPTIONAL: dependencyList bileşeninin performans için virtual list (https://framework7.io/docs/virtual-list.html) kullanması daha etkili olur ancak arama entegrasyonu için ekstrada mühendisliğe ihtiyaç duymadım zaten onun haricinde olabildiğince optimize etmeye çalıştım
 // FIXME app.js içinde "FIXMEIFYOUCAN"
 // Wave4
+// * FIXME: kamera web'de açılmıyor (Camera.requestPermissions implement sınırına takılıyor, isNativePlatform ile kontrol edip "native-unrequestable" diye özel bir permission durumu döndürüyoruz, sonra klasik izin mekanizmasında bu durumu aynı granted gibi ignore edip kodu devam ettiriyoruz sonra izin işini getUserMedia'ya bırakıyoruz, "unsupport" ile birazda hata yönetimi) i.b: CameraManager: start, requestCameraPermission; Compass.camera instanceof *: 3 (onError)
+// Wave5
 // FIXME: Bulunmayı bekleyen nadir hatalar
 // ? Çözümleri detaylı yazmadım nasıl çözdüğüme ilgili bölümlerden bakabilirsiniz
 // ? TODOOPTIONAL=DEVLOG
