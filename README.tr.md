@@ -80,13 +80,16 @@ Kendime ait mimarilerin ilk adımı: <span style="color: green;">+2</span><br>
 
 # Ekran Görüntüleri
 
-<img src="screenshots/app-desktop-home.png" alt="Preview-desktop-home" width="440">
-<img src="screenshots/app-desktop-home-dark.png" alt="Preview-desktop-home" width="440">
+<div>
+    <img src="screenshots/app-desktop-home.png" alt="Preview-desktop-home" width="440"><br>
+    <img src="screenshots/app-desktop-home-dark.png" alt="Preview-desktop-home" width="440">
+</div>
 
 ---
 
-<img src="screenshots/app-mobile-home.png" alt="Preview-desktop-home" width="140">
-<img src="screenshots/app-mobile-home-dark.png" alt="Preview-desktop-home" width="140">
+<div style="display: flex; gap: 8px; align-items: center;">
+    <img src="screenshots/app-mobile-home.png" alt="Preview-desktop-home" width="140"> <img src="screenshots/app-mobile-home-dark.png" alt="Preview-desktop-home" width="140">
+</div>
 
 ---
 

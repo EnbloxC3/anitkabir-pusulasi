@@ -80,13 +80,16 @@ First steps of my own architectures: <span style="color: green;">+2</span><br>
 
 # Preview
 
-<img src="screenshots/app-desktop-home.png" alt="Preview-desktop-home" width="440">
-<img src="screenshots/app-desktop-home-dark.png" alt="Preview-desktop-home" width="440">
+<div>
+    <img src="screenshots/app-desktop-home.png" alt="Preview-desktop-home" width="440"><br>
+    <img src="screenshots/app-desktop-home-dark.png" alt="Preview-desktop-home" width="440">
+</div>
 
 ---
 
-<img src="screenshots/app-mobile-home.png" alt="Preview-desktop-home" width="140">
-<img src="screenshots/app-mobile-home-dark.png" alt="Preview-desktop-home" width="140">
+<div style="display: flex; gap: 8px; align-items: center;">
+    <img src="screenshots/app-mobile-home.png" alt="Preview-desktop-home" width="140"> <img src="screenshots/app-mobile-home-dark.png" alt="Preview-desktop-home" width="140">
+</div>
 
 ---
 
@@ -95,5 +98,3 @@ First steps of my own architectures: <span style="color: green;">+2</span><br>
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/EnbloxC3/anitkabir-pusulasi)
 ![GitHub repo size](https://img.shields.io/github/repo-size/EnbloxC3/anitkabir-pusulasi)
 ![GitHub repo file or directory count](https://img.shields.io/github/directory-file-count/EnbloxC3/anitkabir-pusulasi)
-
-<!-- same origin push test -->
