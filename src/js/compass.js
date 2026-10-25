@@ -282,9 +282,16 @@ class CameraManager {
   async requestCameraPermission() {
     if (this.permissionRequest) return this.permissionRequest;
 
-    this.permissionRequest = Camera.requestPermissions({
-      permissions: ["camera"],
-    });
+    this.permissionRequest = (async () => {
+      if (Capacitor.isNativePlatform()) {
+        return Camera.requestPermissions({
+          permissions: ["camera"],
+        });
+      }
+      if (navigator.mediaDevices?.getUserMedia)
+        return { camera: "native-unrequestable" };
+      else return { camera: "unsupported" };
+    })();
 
     try {
       return await this.permissionRequest;
@@ -303,17 +310,31 @@ class CameraManager {
         const runtimePermission = await this.requestCameraPermission();
         perm = runtimePermission.camera;
       }
-      if (perm !== "granted") {
+      if (perm !== "granted" && perm !== "native-unrequestable") {
+        if (perm === "unsupported")
+          throw new Error("MediaDevices not supported.", {
+            cause: "permission_unsupported",
+          });
         throw new Error("Camera permission wasn't given.", {
           cause: "permission_denied",
         });
       }
       if (!this.targetState) return;
-
-      const stream = await navigator.mediaDevices.getUserMedia({
-        video: { facingMode: "environment" },
-        audio: false,
-      });
+      const stream = await navigator.mediaDevices
+        .getUserMedia({
+          video: { facingMode: "environment" },
+          audio: false,
+        })
+        .catch((e) => {
+          if (e.name === "NotAllowedError")
+            throw new Error("Camera permission wasn't given.", {
+              cause: "permission_denied",
+            });
+          else
+            throw new Error("Unknown camera error.", {
+              cause: e,
+            });
+        });
 
       if (!this.targetState) {
         stream.getTracks().forEach((track) => track.stop());
@@ -470,6 +491,7 @@ class Compass {
         "color: orangered;",
       ]);
       let permError = e.cause === "permission_denied";
+      if (e.cause === "permission_unsupported") return;
       this.app.dialog
         .create({
           title: permError ? Ostr.permission_needed : Ostr.camera_error,
