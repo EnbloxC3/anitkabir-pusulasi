@@ -420,6 +420,7 @@ class CameraManager {
   }
 }
 
+// -- v1.0.0 --
 // Wave1
 // * FIXME: İzin verilmediğnde kamera modu sürekli dialog çıkartıyor (çözüldü, handleError ile error deduplication, requestCameraPermission ile native dialog deduplication yapıldı ayrıca bazı spesifik durumlar için start'ın başındaki kontrolleri yeniledim) i.b: CameraManager: handleError, requestCameraPermission, start
 // * TODO: Pusulayı hem düz hem dik yüzeyde stabil hale getir, (bu kısmı sonradan yazdım)"AR için ayrı bir hesaplama bandı kur, ikisine de gelen veri için ortak bir hesaplama kullan ve bunları daha sonra türet" (çözüldü, diğer TODO'da açıklaması var), i.b: handleOrientation
@@ -445,10 +446,18 @@ class CameraManager {
 // * TODOOPTIONAL: erişilebilirlik geliştirmesi i.b: pages/*/*.f7: all(.item-link), components/*/*.f7: all(.item-link), css/native.css, setupOther: talkbackConf
 // FIXMEOPTIONAL: dependencyList bileşeninin performans için virtual list (https://framework7.io/docs/virtual-list.html) kullanması daha etkili olur ancak arama entegrasyonu için ekstrada mühendisliğe ihtiyaç duymadım zaten onun haricinde olabildiğince optimize etmeye çalıştım
 // FIXME app.js içinde "FIXMEIFYOUCAN"
+// * -- beta.1 end of bundle (completed) --
 // Wave4
 // * FIXME: kamera web'de açılmıyor (Camera.requestPermissions implement sınırına takılıyor, isNativePlatform ile kontrol edip "native-unrequestable" diye özel bir permission durumu döndürüyoruz, sonra klasik izin mekanizmasında bu durumu aynı granted gibi ignore edip kodu devam ettiriyoruz sonra izin işini getUserMedia'ya bırakıyoruz, "unsupport" ile birazda hata yönetimi) i.b: CameraManager: start, requestCameraPermission; Compass.camera instanceof *: 3 (onError)
 // Wave5
+// TODO: link Open Graph
 // FIXME: Bulunmayı bekleyen nadir hatalar
+// -- beta.2 end of bundle (uncompleted) --
+// FIXME: Bulunmayı bekleyen nadir hatalar
+// -- beta.2 end of bundle (queue) --
+// -- v1.0.1 --
+// ? (*.*.0 uncompleted)
+// ---------------------------------------
 // ? Çözümleri detaylı yazmadım nasıl çözdüğüme ilgili bölümlerden bakabilirsiniz
 // ? TODOOPTIONAL=DEVLOG
 // ! Bundan çok daha fazla sorun elbette var ancak bu proje artık benim için bir anlam ifade etmiyor bu yüzden daha fazla uğraşmak istemiyorum
