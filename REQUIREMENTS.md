@@ -47,18 +47,20 @@
 
 ### Initial
 
-| Kind     | Minimums/Requirements             |
-| -------- | --------------------------------- |
-| OS       | Linux, Windows, macOS (POSIX, NT) |
-| Node.js  | >=22.12                           |
-| Npm      | >~11.7.0                          |
-| Optional | Text Editor (VSCod(e/ium))        |
+| Kind     | Minimums/Requirements           |
+| -------- | ------------------------------- |
+| OS       | any (at least POSIX compatible) |
+| Node.js  | >=22.12                         |
+| Npm      | >~11.7.0                        |
+| Optional | Text Editor (VSCod(e/ium))      |
 
 ### Web
 
-| Kind | Minimums/Requirements |
-| ---- | --------------------- |
-| Vite | 7                     |
+| Kind       | Minimums/Requirements |
+| ---------- | --------------------- |
+| Vite       | 7                     |
+| Capacitor  | 8                     |
+| Framework7 | 9                     |
 
 ### Android App
 
@@ -75,5 +77,5 @@
 
 | Kind     | Minimums/Requirements |
 | -------- | --------------------- |
-| OS       | macOS                 |
+| OS       | macOS (Darwin)        |
 | Optional | IDE (Xcode)           |

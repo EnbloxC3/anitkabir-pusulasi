@@ -47,18 +47,20 @@
 
 ### İlk Olarak
 
-| Tür             | Minimum/Gereksinimler             |
-| --------------- | --------------------------------- |
-| İşletim Sistemi | Linux, Windows, macOS (POSIX, NT) |
-| Node.js         | >=22.12                           |
-| Npm             | >~11.7.0                          |
-| İsteğe bağlı    | Metin Editörü (VSCod(e/ium))      |
+| Tür             | Minimum/Gereksinimler              |
+| --------------- | ---------------------------------- |
+| İşletim Sistemi | herhangi (en azından POSIX uyumlu) |
+| Node.js         | >=22.12                            |
+| Npm             | >~11.7.0                           |
+| İsteğe bağlı    | Metin Editörü (VSCod(e/ium))       |
 
 ### Web
 
-| Tür  | Minimum/Gereksinimler |
-| ---- | --------------------- |
-| Vite | 7                     |
+| Tür        | Minimum/Gereksinimler |
+| ---------- | --------------------- |
+| Vite       | 7                     |
+| Capacitor  | 8                     |
+| Framework7 | 9                     |
 
 ### Android Uygulaması
 
@@ -75,5 +77,5 @@
 
 | Tür             | Minimum/Gereksinimler |
 | --------------- | --------------------- |
-| İşletim Sistemi | macOS                 |
+| İşletim Sistemi | macOS (Darwin)        |
 | İsteğe Bağlı    | IDE (Xcode)           |
