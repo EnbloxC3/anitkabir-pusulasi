@@ -453,13 +453,14 @@ class CameraManager {
 // TODO: link Open Graph
 // FIXME: Bulunmayı bekleyen nadir hatalar
 // -- beta.2 end of bundle (uncompleted) --
-// FIXME: Bulunmayı bekleyen nadir hatalar
-// -- beta.2 end of bundle (queue) --
+// -- beta.3 end of bundle (queue) --
 // -- v1.0.1 --
 // ? (*.*.0 uncompleted)
 // ---------------------------------------
 // ? Çözümleri detaylı yazmadım nasıl çözdüğüme ilgili bölümlerden bakabilirsiniz
+// ? *: solved/complete; --: each bundle end/each version start; ?(descriptions): description; ?(syntax): info; !(descriptions): warning; //Wave*: each maintain session; //-*31: split
 // ? TODOOPTIONAL=DEVLOG
+// ? FIXMEOPTIONAL=Optional fix
 // ! Bundan çok daha fazla sorun elbette var ancak bu proje artık benim için bir anlam ifade etmiyor bu yüzden daha fazla uğraşmak istemiyorum
 // ! README'de zaten yeterince açıklama var
 
