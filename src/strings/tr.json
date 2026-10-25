@@ -20,6 +20,8 @@
     "alpha": "Alfa",
     "beta": "Beta",
     "stable": "Kararlı",
+    "light": "Aydınlık",
+    "dark": "Karanlık",
     "package": "Paket",
     "copy": "Kopyala",
     "advanced": "Gelişmiş",

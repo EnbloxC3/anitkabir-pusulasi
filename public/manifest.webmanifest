@@ -1,49 +1,88 @@
 {
+  "id": "./",
   "name": "Anıtkabir Pusulası",
   "short_name": "Anıtkabir",
   "description": "Bu uygulama Anıtkabir'in konumunu gösteren bir pusula uygulamasıdır.",
+  "lang": "tr",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "categories": ["navigation", "utilities"],
+  "theme_color": "#e30a17",
+  "background_color": "#000000",
   "icons": [
     {
-      "src": "../icons/icon-48.webp",
+      "src": "./icons/icon-48.png",
       "type": "image/png",
       "sizes": "48x48",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "../icons/icon-72.webp",
+      "src": "./icons/icon-72.png",
       "type": "image/png",
       "sizes": "72x72",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "../icons/icon-96.webp",
+      "src": "./icons/icon-96.png",
       "type": "image/png",
       "sizes": "96x96",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "../icons/icon-128.webp",
+      "src": "./icons/icon-128.png",
       "type": "image/png",
       "sizes": "128x128",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "../icons/icon-192.webp",
+      "src": "./icons/icon-192.png",
       "type": "image/png",
       "sizes": "192x192",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "../icons/icon-256.webp",
+      "src": "./icons/icon-256.png",
       "type": "image/png",
       "sizes": "256x256",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "../icons/icon-512.webp",
+      "src": "./icons/icon-512.png",
       "type": "image/png",
       "sizes": "512x512",
-      "purpose": "any maskable"
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "./screenshots/app-mobile-home.png",
+      "sizes": "810x1800",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Anıtkabir Pusulası Aydınlık"
+    },
+    {
+      "src": "./screenshots/app-mobile-home-dark.png",
+      "sizes": "810x1800",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Anıtkabir Pusulası Karanlık"
+    },
+    {
+      "src": "./screenshots/app-desktop-home.png",
+      "sizes": "1920x1079",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Anıtkabir Pusulası Aydınlık"
+    },
+    {
+      "src": "./screenshots/app-desktop-home-dark.png",
+      "sizes": "1920x1079",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Anıtkabir Pusulası Karanlık"
     }
   ]
 }

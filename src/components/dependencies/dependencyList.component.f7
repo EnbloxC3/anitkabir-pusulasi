@@ -8,7 +8,7 @@
   import Lister from "./lister.component.f7";
   export default async (props) => {
     const packages = props.dependencies.packages.filter((p) =>
-      p.type.includes("devDependency"),
+      p.type.includes("dependency"),
     );
     return $render;
   };

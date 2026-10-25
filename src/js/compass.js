@@ -535,6 +535,14 @@ class Compass {
         .removeClass("button-active")
         .filter((el) => $$(el).data("value") === mode)
         .addClass("button-active");
+      $$(`meta[name="theme-color"]`).attr(
+        "content",
+        getComputedStyle(document.documentElement)
+          .getPropertyValue(
+            this.app.device.desktop ? "--f7-bars-bg-color" : "--f7-theme-color",
+          )
+          .trim(),
+      );
       this.log(`setThemeMode *: %c${mode}`, "debug", ["color: lightblue;"]);
     };
 
@@ -642,8 +650,8 @@ class Compass {
     Geolocation.watchPosition(
       {
         enableHighAccuracy: true,
-        maximumAge: 1000,
-        minimumUpdateInterval: 0,
+        maximumAge: 1e4,
+        minimumUpdateInterval: 500,
         timeout: 6e4,
       },
       (pos, err) => {

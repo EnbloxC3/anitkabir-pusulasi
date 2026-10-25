@@ -213,7 +213,7 @@
 <script>
   import strings, { _dom_utils } from "@/js/string.js";
   const { pages } = strings;
-  export default (_, { $f7, $el, $once }) => {
+  export default (_, { $, $f7, $el, $once }) => {
     $once("pageInit", (_, page) => {
       //if (page.el !== $el.value[0]) return;
       const context = pages[page.name];
@@ -222,6 +222,24 @@
       //mainpage specific
       document.documentElement.lang = strings.internal.lang;
       document.documentElement.dir = strings.internal.dir;
+      const documentStyles = getComputedStyle(document.documentElement);
+      /*dynamic manifest*/
+      setManifest({
+        name: strings.app.name,
+        short_name: strings.app.name.split(" ")[0],
+        description: strings.app.description,
+        lang: document.documentElement.lang,
+        dir: document.documentElement.dir,
+        theme_color: documentStyles.getPropertyValue($f7.device.desktop ? "--f7-bars-bg-color" : "--f7-theme-color").trim(),
+        background_color: documentStyles.getPropertyValue("--f7-page-bg-color").trim(),
+        screenshots: [
+          { label: `${strings.app.name} ${strings.common.light}` },
+          { label: `${strings.app.name} ${strings.common.dark}` },
+          { label: `${strings.app.name} ${strings.common.light}` },
+          { label: `${strings.app.name} ${strings.common.dark}` },
+        ]
+      });
+      $(`meta[name="theme-color"]`).attr("content", documentStyles.getPropertyValue($f7.device.desktop ? "--f7-bars-bg-color" : "--f7-theme-color").trim())
 
       //page specific
       if (sessionStorage.getItem("splitMenu") === "1")

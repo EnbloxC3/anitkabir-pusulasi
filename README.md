@@ -1,7 +1,11 @@
-# Anıtkabir Pusulası
+# <img src="icons/icon-48.webp" alt="Icon" width="40"> Anıtkabir Pusulası <img src="icons/icon-48.webp" alt="Icon" width="40">
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue?style=flat-square)
 ![License](https://img.shields.io/github/license/EnbloxC3/anitkabir-pusulasi?style=flat-square)
+
+<img src="screenshots/app-desktop-home.png" alt="Preview-desktop-home" width="1300">
+
+---
 
 > [!IMPORTANT]  
 > This project belongs to the FOSS community and will not be further developed by its individual developer.
@@ -71,6 +75,18 @@ Unstable development enviorment for me: <span style="color: red;">-1</span><br>
 Native hardness: <span style="color: red;">-1</span><br>
 Learning: <span style="color: green;">+2</span><br>
 First steps of my own architectures: <span style="color: green;">+2</span><br>
+
+---
+
+# Preview
+
+<img src="screenshots/app-desktop-home.png" alt="Preview-desktop-home" width="440">
+<img src="screenshots/app-desktop-home-dark.png" alt="Preview-desktop-home" width="440">
+
+---
+
+<img src="screenshots/app-mobile-home.png" alt="Preview-desktop-home" width="140">
+<img src="screenshots/app-mobile-home-dark.png" alt="Preview-desktop-home" width="140">
 
 ---
 

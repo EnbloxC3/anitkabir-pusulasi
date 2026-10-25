@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <meta charset="utf-8" />
     <!--
@@ -10,19 +11,22 @@
     * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
       * Enable inline JS: add 'unsafe-inline' to default-src
   -->
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: content:"
-    />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover"
-    />
+    <meta http-equiv="Content-Security-Policy"
+      content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: content:" />
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover" />
+
+    <base href="%BASE_URL%">
+
+    <!-- Uninitialized default manifest, override it with setManifest (requires JavaScript enabled) -->
+    <link rel="manifest" href="manifest.webmanifest">
 
     <meta name="theme-color" content="#e30a17" />
+    <meta name="color-scheme" content="light dark">
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
     <link rel="icon" href="assets/favicon.png" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
     <title>Anıtkabir Pusulası</title>
     <style>
       :root,
@@ -30,6 +34,7 @@
       body {
         background-color: #000000;
       }
+
       .noscript-screen {
         position: fixed;
         inset: 0;
@@ -44,6 +49,7 @@
         user-select: none;
         -webkit-font-smoothing: antialiased;
       }
+
       .noscript-dialog {
         width: min(100%, 360px);
         box-sizing: border-box;
@@ -52,6 +58,7 @@
         box-shadow: 0 0 0 1px #333, inset 0 1px 0 #eeeeee, inset 0 -1px 0 #888,
           2px 2px 0 rgba(0, 0, 0, 0.45);
       }
+
       .noscript-title {
         box-sizing: border-box;
         padding: 7px 10px;
@@ -63,25 +70,109 @@
         font-weight: 600;
         box-shadow: inset 0 1px 0 #cfcfcf, inset 0 -1px 0 #858585;
       }
+
       .noscript-description {
         box-sizing: border-box;
         padding: 12px 13px 13px;
         background: #d7d7d7;
         border-top: 1px solid #eeeeee;
       }
+
       .noscript-description p {
         margin: 0;
         color: #292929;
         font-size: 13px;
         line-height: 1.4;
       }
-      .noscript-description p + p {
+
+      .noscript-description p+p {
         margin-top: 8px;
       }
     </style>
 
     <!-- built styles file will be auto injected -->
+
+    <script>
+      function resolveManifestURLs(manifest) {
+        for (const icon of manifest.icons ?? []) {
+          icon.src = new URL(icon.src, document.baseURI).href;
+        }
+
+        for (const screenshot of manifest.screenshots ?? []) {
+          screenshot.src = new URL(screenshot.src, document.baseURI).href;
+        }
+
+        return manifest;
+      }
+
+      function deepMerge(defaults, overrides) {
+        if (overrides === "%DEFAULT%") {
+          return defaults;
+        }
+        if (Array.isArray(defaults) && Array.isArray(overrides)) {
+          const result = [...defaults];
+
+          for (let i = 0; i < overrides.length; i++) {
+            if (!(i in overrides)) continue;
+            result[i] = i in defaults
+              ? deepMerge(defaults[i], overrides[i])
+              : overrides[i] === "%DEFAULT%"
+                ? undefined
+                : overrides[i];
+          }
+          return result;
+        }
+        if (
+          defaults !== null &&
+          overrides !== null &&
+          typeof defaults === "object" &&
+          typeof overrides === "object" &&
+          !Array.isArray(defaults) &&
+          !Array.isArray(overrides)
+        ) {
+          const result = { ...defaults };
+
+          for (const key of Object.keys(overrides)) {
+            result[key] = key in defaults
+              ? deepMerge(defaults[key], overrides[key])
+              : overrides[key];
+          }
+          return result;
+        }
+        return overrides;
+      }
+
+
+      async function setManifest(overrides = {}) {
+        const response = await fetch("manifest.webmanifest");
+
+        if (!response.ok) {
+          throw new Error(
+            `Manifest cant load: ${response.status}`
+          );
+        }
+
+        const defaults = await response.json();
+        const manifest = resolveManifestURLs(deepMerge(defaults, overrides));
+        const url =
+          `data:application/manifest+json;charset=utf-8,${encodeURIComponent(
+            JSON.stringify(manifest)
+          )}`;
+        let link = document.querySelector(
+          'link[rel="manifest"]'
+        );
+
+        if (!link) {
+          link = document.createElement("link");
+          link.rel = "manifest";
+          document.head.appendChild(link);
+        }
+        link.href = url;
+        return manifest;
+      }
+    </script>
   </head>
+
   <body>
     <div id="app"></div>
 
@@ -103,4 +194,5 @@
       </div>
     </noscript>
   </body>
+
 </html>

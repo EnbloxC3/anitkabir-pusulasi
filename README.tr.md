@@ -1,7 +1,11 @@
-# Anıtkabir Pusulası
+# <img src="icons/icon-48.webp" alt="Icon" width="40"> Anıtkabir Pusulası <img src="icons/icon-48.webp" alt="Icon" width="40">
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue?style=flat-square)
 ![License](https://img.shields.io/github/license/EnbloxC3/anitkabir-pusulasi?style=flat-square)
+
+<img src="screenshots/app-desktop-home.png" alt="Preview-desktop-home" width="1300">
+
+---
 
 > [!IMPORTANT]  
 > Bu proje Ücretsiz ve Açık Kaynak Yazılım (FOSS) topluluğuna bırakılmıştır ve bireysel geliştiricisi tarafından daha fazla geliştirilmeyecektir.
@@ -71,6 +75,18 @@ Benim için pamuk ipliğine bağlı bir geliştirme ortamı: <span style="color:
 Native tarafın zorluğu: <span style="color: red;">-1</span><br>
 Öğrenme: <span style="color: green;">+2</span><br>
 Kendime ait mimarilerin ilk adımı: <span style="color: green;">+2</span><br>
+
+---
+
+# Ekran Görüntüleri
+
+<img src="screenshots/app-desktop-home.png" alt="Preview-desktop-home" width="440">
+<img src="screenshots/app-desktop-home-dark.png" alt="Preview-desktop-home" width="440">
+
+---
+
+<img src="screenshots/app-mobile-home.png" alt="Preview-desktop-home" width="140">
+<img src="screenshots/app-mobile-home-dark.png" alt="Preview-desktop-home" width="140">
 
 ---
 
