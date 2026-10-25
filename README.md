@@ -7,10 +7,17 @@
 
 ---
 
+[Try Beta](https://enbloxc3.github.io/anitkabir-pusulasi) |
+[GitHub Repo](https://github.com/EnbloxC3/anitkabir-pusulasi) |
+[GitLab Repo](https://gitlab.com/EnbloxC3/anitkabir-pusulasi) |
+[License](LICENSE) |
+[Preview](README.md#preview) |
+[Turkish Version](README.tr.md)
+
+---
+
 > [!IMPORTANT]  
 > This project belongs to the FOSS community and will not be further developed by its individual developer.
-
-[Turkish Version](README.tr.md)
 
 This app is a compass app that shows the location of Anıtkabir (the mausoleum of Atatürk).
 

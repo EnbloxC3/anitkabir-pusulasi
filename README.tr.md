@@ -7,10 +7,17 @@
 
 ---
 
+[Beta'yı Dene](https://enbloxc3.github.io/anitkabir-pusulasi) |
+[GitHub Deposu](https://github.com/EnbloxC3/anitkabir-pusulasi) |
+[GitLab Deposu](https://gitlab.com/EnbloxC3/anitkabir-pusulasi) |
+[Lisans](LICENSE) |
+[Önizleme](README.tr.md#ekran-görüntüleri) |
+[English Version](README.md)
+
+---
+
 > [!IMPORTANT]  
 > Bu proje Ücretsiz ve Açık Kaynak Yazılım (FOSS) topluluğuna bırakılmıştır ve bireysel geliştiricisi tarafından daha fazla geliştirilmeyecektir.
-
-[English Version](README.md)
 
 Bu uygulama Anıtkabir'in konumunu gösteren bir pusula uygulamasıdır.
 
