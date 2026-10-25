@@ -35,8 +35,8 @@ jobs:
       - name: Build web app
         run: npm run build -- --mode beta
         env:
-          VITE_DEBUG_UI: "true"
-          VITE_ERUDA: "false"
+          VITE_DEBUG_UI: true
+          VITE_ERUDA: false
 
       - name: Install build out
         uses: actions/upload-pages-artifact@v3
